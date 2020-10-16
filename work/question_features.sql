@@ -39,6 +39,6 @@ WHERE cv_fold_4 != -1
 GROUP BY content_id
 )
 
--- main table
+-- joint question
 SELECT * FROM Kaggle_Riiid.questions
 INNER JOIN  contents_feat_table USING (question_id)
