@@ -6,6 +6,8 @@ FROM Kaggle_Riiid.train
 ORDER BY user_id, timestamp, row_id
 )
 
+-- Fold 0
+
 SELECT
   user_id,
   0 AS cv_fold,
@@ -39,7 +41,7 @@ UNION ALL
 
 SELECT
   user_id,
-  1 AS cv_fold,
+  0 AS cv_fold,
   -- answer features
   COUNT(answered_correctly) AS answered_correctly_count,
   SUM(answered_correctly) AS answered_correctly_sum,
@@ -70,7 +72,7 @@ UNION ALL
 
 SELECT
   user_id,
-  2 AS cv_fold,
+  0 AS cv_fold,
   -- answer features
   COUNT(answered_correctly) AS answered_correctly_count,
   SUM(answered_correctly) AS answered_correctly_sum,
@@ -101,7 +103,7 @@ UNION ALL
 
 SELECT
   user_id,
-  3 AS cv_fold,
+  0 AS cv_fold,
   -- answer features
   COUNT(answered_correctly) AS answered_correctly_count,
   SUM(answered_correctly) AS answered_correctly_sum,
@@ -132,7 +134,7 @@ UNION ALL
 
 SELECT
   user_id,
-  4 AS cv_fold,
+  0 AS cv_fold,
   -- answer features
   COUNT(answered_correctly) AS answered_correctly_count,
   SUM(answered_correctly) AS answered_correctly_sum,
