@@ -1,3 +1,6 @@
+-- set fold number
+DECLARE fold INT64 DEFAULT 0;
+
 WITH add_lag_feat_table AS (
 SELECT
   *,
@@ -6,11 +9,9 @@ FROM Kaggle_Riiid.train
 ORDER BY user_id, timestamp, row_id
 )
 
--- Fold 0
-
 SELECT
   user_id,
-  0 AS cv_fold,
+  fold AS cv_fold,
   -- answer features
   COUNT(answered_correctly) AS answered_correctly_count,
   SUM(answered_correctly) AS answered_correctly_sum,
@@ -41,7 +42,7 @@ UNION ALL
 
 SELECT
   user_id,
-  0 AS cv_fold,
+  fold AS cv_fold,
   -- answer features
   COUNT(answered_correctly) AS answered_correctly_count,
   SUM(answered_correctly) AS answered_correctly_sum,
@@ -72,7 +73,7 @@ UNION ALL
 
 SELECT
   user_id,
-  0 AS cv_fold,
+  fold AS cv_fold,
   -- answer features
   COUNT(answered_correctly) AS answered_correctly_count,
   SUM(answered_correctly) AS answered_correctly_sum,
@@ -103,7 +104,7 @@ UNION ALL
 
 SELECT
   user_id,
-  0 AS cv_fold,
+  fold AS cv_fold,
   -- answer features
   COUNT(answered_correctly) AS answered_correctly_count,
   SUM(answered_correctly) AS answered_correctly_sum,
@@ -134,7 +135,7 @@ UNION ALL
 
 SELECT
   user_id,
-  0 AS cv_fold,
+  fold AS cv_fold,
   -- answer features
   COUNT(answered_correctly) AS answered_correctly_count,
   SUM(answered_correctly) AS answered_correctly_sum,
