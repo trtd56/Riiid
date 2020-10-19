@@ -5,6 +5,7 @@ OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         MAX_ITERATIONS = 1000,  -- early stoppingがあるのでなるだけ多く
         TREE_METHOD = 'HIST',
         EARLY_STOP = True,
+        MIN_REL_PROGRESS=0.001,
         LEARN_RATE =0.1,
         MAX_TREE_DEPTH=5, -- 5 ~ 8
         COLSAMPLE_BYTREE=1.0,
