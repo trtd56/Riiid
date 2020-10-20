@@ -1,4 +1,4 @@
-CREATE MODEL Kaggle_Riiid.xgb_v1_6_fold0
+CREATE MODEL Kaggle_Riiid.xgb_v2_fold0
 OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         BOOSTER_TYPE = 'GBTREE',
         NUM_PARALLEL_TREE = 1,
@@ -16,7 +16,8 @@ OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         INPUT_LABEL_COLS = ['answered_correctly'],
         DATA_SPLIT_METHOD='CUSTOM',
         DATA_SPLIT_COL='is_test')    
-AS SELECT 
+AS SELECT
+  -- v1 features
   CAST(user_id AS STRING) AS user_id,
   IFNULL(timestamp, -1) AS timestamp,
   CAST(content_id AS STRING) AS content_id,
@@ -54,10 +55,49 @@ AS SELECT
   IFNULL(content_question_had_explanation_sum, -1) AS content_question_had_explanation_sum,
   IFNULL(content_question_had_explanation_avg, -1) AS content_question_had_explanation_avg,
   IFNULL(content_question_had_explanation_std, -1) AS content_question_had_explanation_std,
+  -- v2 features
+  IFNULL(timediff_start_max, -1) AS timediff_start_max,
+  IFNULL(timediff_start_min, -1) AS timediff_start_min,
+  IFNULL(timediff_start_avg, -1) AS timediff_start_avg,
+  IFNULL(timediff_start_std, -1) AS timediff_start_std,
+  IFNULL(user_timediff_2_max, -1) AS user_timediff_2_max,
+  IFNULL(user_timediff_2_min, -1) AS user_timediff_2_min,
+  IFNULL(user_timediff_2_avg, -1) AS user_timediff_2_avg,
+  IFNULL(user_timediff_2_std, -1) AS user_timediff_2_std,
+  IFNULL(user_timediff_4_max, -1) AS user_timediff_4_max,
+  IFNULL(user_timediff_4_min, -1) AS user_timediff_4_min,
+  IFNULL(user_timediff_4_avg, -1) AS user_timediff_4_avg,
+  IFNULL(user_timediff_4_std, -1) AS user_timediff_4_std,
+  IFNULL(user_timediff_8_max, -1) AS user_timediff_8_max,
+  IFNULL(user_timediff_8_min, -1) AS user_timediff_8_min,
+  IFNULL(user_timediff_8_avg, -1) AS user_timediff_8_avg,
+  IFNULL(user_timediff_8_std, -1) AS user_timediff_8_std,
+  IFNULL(user_timediff_16_max, -1) AS user_timediff_16_max,
+  IFNULL(user_timediff_16_min, -1) AS user_timediff_16_min,
+  IFNULL(user_timediff_16_avg, -1) AS user_timediff_16_avg,
+  IFNULL(user_timediff_16_std, -1) AS user_timediff_16_std,
+  IFNULL(part_n_content_id, -1) AS part_n_content_id,
+  IFNULL(part_bundle_id, -1) AS part_bundle_id,
+  IFNULL(part_n_user, -1) AS part_n_user,
+  IFNULL(part_n_unique_user, -1) AS part_n_unique_user,
+  IFNULL(part_answered_correctly_count, -1) AS part_answered_correctly_count,
+  IFNULL(part_answered_correctly_sum, -1) AS part_answered_correctly_sum,
+  IFNULL(part_answered_correctly_avg, -1) AS part_answered_correctly_avg,
+  IFNULL(part_answered_correctly_std, -1) AS part_answered_correctly_std,
+  IFNULL(part_question_elapsed_time_max, -1) AS part_question_elapsed_time_max,
+  IFNULL(part_question_elapsed_time_min, -1) AS part_question_elapsed_time_min,
+  IFNULL(part_question_elapsed_time_avg, -1) AS part_question_elapsed_time_avg,
+  IFNULL(part_question_elapsed_time_std, -1) AS part_question_elapsed_time_std,
+  IFNULL(part_question_had_explanation_sum, -1) AS part_question_had_explanation_sum,
+  IFNULL(part_question_had_explanation_avg, -1) AS part_question_had_explanation_avg,
+  IFNULL(part_question_had_explanation_std, -1) AS part_question_had_explanation_std,
+  CAST(part_type AS STRING) AS part_type,  
   answered_correctly,  -- target
   cv_fold_0　= -1 as is_test,  -- test split rule
 FROM Kaggle_Riiid.cv_fold_info_20201015 
 INNER JOIN  Kaggle_Riiid.train USING (row_id)
 INNER JOIN Kaggle_Riiid.feat_u_v1 USING (user_id)
+INNER JOIN Kaggle_Riiid.feat_u_v2 USING (user_id)
 INNER JOIN Kaggle_Riiid.feat_q_v1 ON feat_q_v1.question_id = train.content_id
+INNER JOIN Kaggle_Riiid.feat_p_v1 USING (part)
 WHERE feat_u_v1.cv_fold = 0 AND feat_q_v1.cv_fold = 0
