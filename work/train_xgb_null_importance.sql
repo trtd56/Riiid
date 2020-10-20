@@ -1,4 +1,4 @@
-CREATE MODEL Kaggle_Riiid.xgb_v1_6_fold0_null_importance
+CREATE OR REPLACE MODEL Kaggle_Riiid.xgb_v1_6_fold0_null_importance
 OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         BOOSTER_TYPE = 'GBTREE',
         NUM_PARALLEL_TREE = 1,
