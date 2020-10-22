@@ -1,4 +1,4 @@
-CREATE MODEL Kaggle_Riiid.xgb_v2_10_fold0
+CREATE MODEL Kaggle_Riiid.xgb_v4_01_fold0
 OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         BOOSTER_TYPE = 'GBTREE',
         NUM_PARALLEL_TREE = 1,
@@ -7,11 +7,11 @@ OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         EARLY_STOP = True,
         MIN_REL_PROGRESS=0.0001,
         LEARN_RATE =0.1,
-        MAX_TREE_DEPTH=8, -- 5 ~ 8
+        MAX_TREE_DEPTH=5, -- 5 ~ 8
         COLSAMPLE_BYTREE=1.0,
-        COLSAMPLE_BYLEVEL=0.1, -- 0.5 ~0.1 を0.1刻み
+        COLSAMPLE_BYLEVEL=0.2, -- 0.5 ~0.1 を0.1刻み
         SUBSAMPLE = 0.9,
-        MIN_TREE_CHILD_WEIGHT=2, -- 2^で増やしていく
+        MIN_TREE_CHILD_WEIGHT=1, -- 2^で増やしていく
         -- 正則化はL1=0, L2=2(デフォルト)
         INPUT_LABEL_COLS = ['answered_correctly'],
         DATA_SPLIT_METHOD='CUSTOM',
@@ -91,13 +91,63 @@ AS SELECT
   IFNULL(part_question_had_explanation_sum, -1) AS part_question_had_explanation_sum,
   IFNULL(part_question_had_explanation_avg, -1) AS part_question_had_explanation_avg,
   IFNULL(part_question_had_explanation_std, -1) AS part_question_had_explanation_std,
-  CAST(part_type AS STRING) AS part_type,  
+  CAST(part_type AS STRING) AS part_type,
+  -- v3 features
+  IFNULL(part1_avg, -1) AS part1_avg,
+  IFNULL(part2_avg, -1) AS part2_avg,
+  IFNULL(part3_avg, -1) AS part3_avg,
+  IFNULL(part4_avg, -1) AS part4_avg,
+  IFNULL(part5_avg, -1) AS part5_avg,
+  IFNULL(part6_avg, -1) AS part6_avg,
+  IFNULL(part7_avg, -1) AS part7_avg,
+  IFNULL(part1_sum, -1) AS part1_sum,
+  IFNULL(part2_sum, -1) AS part2_sum,
+  IFNULL(part3_sum, -1) AS part3_sum,
+  IFNULL(part4_sum, -1) AS part4_sum,
+  IFNULL(part5_sum, -1) AS part5_sum,
+  IFNULL(part6_sum, -1) AS part6_sum,
+  IFNULL(part7_sum, -1) AS part7_sum,
+  IFNULL(part1_std, -1) AS part1_std,
+  IFNULL(part2_std, -1) AS part2_std,
+  IFNULL(part3_std, -1) AS part3_std,
+  IFNULL(part4_std, -1) AS part4_std,
+  IFNULL(part5_std, -1) AS part5_std,
+  IFNULL(part6_std, -1) AS part6_std,
+  IFNULL(part7_std, -1) AS part7_std,
+  IFNULL(task_container_id_max, -1) AS task_container_id_max,
+  IFNULL(n_unique_task_container_id, -1) AS n_unique_task_container_id,
+  -- v4 features
+  IFNULL(content_correct_0, -1) AS content_correct_0,
+  IFNULL(content_correct_1, -1) AS content_correct_1,
+  IFNULL(content_correct_2, -1) AS content_correct_2,
+  IFNULL(content_correct_3, -1) AS content_correct_3,
+  IFNULL(content_correct_4, -1) AS content_correct_4,
+  IFNULL(content_miss_0, -1) AS content_miss_0, 
+  IFNULL(content_miss_1, -1) AS content_miss_1, 
+  IFNULL(content_miss_2, -1) AS content_miss_2, 
+  IFNULL(content_miss_3, -1) AS content_miss_3, 
+  IFNULL(content_miss_4, -1) AS content_miss_4, 
+  IFNULL(user_correct_0, -1) AS user_correct_0, 
+  IFNULL(user_correct_1, -1) AS user_correct_1, 
+  IFNULL(user_correct_2, -1) AS user_correct_2, 
+  IFNULL(user_correct_3, -1) AS user_correct_3, 
+  IFNULL(user_correct_4, -1) AS user_correct_4, 
+  IFNULL(user_miss_0, -1) AS user_miss_0, 
+  IFNULL(user_miss_1, -1) AS user_miss_1, 
+  IFNULL(user_miss_2, -1) AS user_miss_2, 
+  IFNULL(user_miss_3, -1) AS user_miss_3, 
+  IFNULL(user_miss_4, -1) AS user_miss_4, 
+  IFNULL(tags_pca_0, -1) AS tags_pca_0,
+  IFNULL(tags_pca_1, -1) AS tags_pca_1,
   answered_correctly,  -- target
   cv_fold_0　= -1 as is_test,  -- test split rule
 FROM Kaggle_Riiid.cv_fold_info_20201015 
 INNER JOIN  Kaggle_Riiid.train USING (row_id)
 INNER JOIN Kaggle_Riiid.feat_u_v1 USING (user_id)
 INNER JOIN Kaggle_Riiid.feat_u_v2 USING (user_id)
+INNER JOIN Kaggle_Riiid.feat_u_v3 USING (user_id)
+INNER JOIN Kaggle_Riiid.feat_u_v4 USING (user_id)
 INNER JOIN Kaggle_Riiid.feat_q_v1 ON feat_q_v1.question_id = train.content_id
+INNER JOIN Kaggle_Riiid.feat_q_v2 ON feat_q_v1.question_id = train.content_id
 INNER JOIN Kaggle_Riiid.feat_p_v1 USING (part)
 WHERE feat_u_v1.cv_fold = 0 AND feat_q_v1.cv_fold = 0
