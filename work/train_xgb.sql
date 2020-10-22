@@ -1,4 +1,4 @@
-CREATE MODEL Kaggle_Riiid.xgb_v4_01_fold0
+CREATE MODEL Kaggle_Riiid.xgb_v5_01_fold0
 OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         BOOSTER_TYPE = 'GBTREE',
         NUM_PARALLEL_TREE = 1,
@@ -9,7 +9,7 @@ OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         LEARN_RATE =0.1,
         MAX_TREE_DEPTH=5, -- 5 ~ 8
         COLSAMPLE_BYTREE=1.0,
-        COLSAMPLE_BYLEVEL=0.2, -- 0.5 ~0.1 を0.1刻み
+        COLSAMPLE_BYLEVEL=0.3, -- 0.5 ~0.1 を0.1刻み
         SUBSAMPLE = 0.9,
         MIN_TREE_CHILD_WEIGHT=1, -- 2^で増やしていく
         -- 正則化はL1=0, L2=2(デフォルト)
@@ -139,6 +139,23 @@ AS SELECT
   IFNULL(user_miss_4, -1) AS user_miss_4, 
   IFNULL(tags_pca_0, -1) AS tags_pca_0,
   IFNULL(tags_pca_1, -1) AS tags_pca_1,
+  -- v5 features
+   IFNULL( lecture_n_content_id , -1) AS lecture_n_content_id,
+   IFNULL( lecture_task_container_id_max , -1) AS lecture_task_container_id_max,
+   IFNULL( lecture_task_container_id_min , -1) AS lecture_task_container_id_min,
+   IFNULL( lecture_task_container_id_avg , -1) AS lecture_task_container_id_avg,
+   IFNULL( lecture_task_container_id_std , -1) AS lecture_task_container_id_std,
+   IFNULL( lecture_timestamp_max , -1) AS lecture_timestamp_max,
+   IFNULL( lecture_timestamp_min , -1) AS lecture_timestamp_min,
+   IFNULL( lecture_timediff_max , -1) AS lecture_timediff_max,
+   IFNULL( lecture_timediff_min , -1) AS lecture_timediff_min,
+   IFNULL( lecture_timediff_avg, -1) AS lecture_timediff_avg,
+   IFNULL( lecture_timediff_std , -1) AS lecture_timediff_std,
+   IFNULL( lecture_0 , -1) AS lecture_0 ,
+   IFNULL( lecture_1 , -1) AS lecture_1 ,
+   IFNULL( lecture_2 , -1) AS lecture_2 ,
+   IFNULL( lecture_3 , -1) AS lecture_3 ,
+   IFNULL( lecture_4 , -1) AS lecture_4 ,
   answered_correctly,  -- target
   cv_fold_0　= -1 as is_test,  -- test split rule
 FROM Kaggle_Riiid.cv_fold_info_20201015 
@@ -150,4 +167,5 @@ INNER JOIN Kaggle_Riiid.feat_u_v4 USING (user_id)
 INNER JOIN Kaggle_Riiid.feat_q_v1 ON feat_q_v1.question_id = train.content_id
 INNER JOIN Kaggle_Riiid.feat_q_v2 ON feat_q_v1.question_id = train.content_id
 INNER JOIN Kaggle_Riiid.feat_p_v1 USING (part)
+INNER JOIN Kaggle_Riiid.feat_l_v1 USING (user_id)
 WHERE feat_u_v1.cv_fold = 0 AND feat_q_v1.cv_fold = 0
