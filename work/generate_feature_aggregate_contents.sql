@@ -11,20 +11,10 @@ ORDER BY user_id, timestamp, row_id
 )
 
 SELECT
-  /*
+  -- ### key columns ###
   content_id as question_id,
   0 AS fold,
 
-  -- prior_question_elapsed_time features
-  MAX(question_elapsed_time) AS content_question_elapsed_time_max,
-  MIN(question_elapsed_time) AS content_question_elapsed_time_min,
-  AVG(question_elapsed_time) AS content_question_elapsed_time_avg,
-  STDDEV(question_elapsed_time) AS content_question_elapsed_time_std,
-  -- prior_question_had_explanation features
-  SUM(CASE WHEN question_had_explanation THEN 1 END) AS content_question_had_explanation_sum,
-  AVG(CASE WHEN question_had_explanation THEN 1 ELSE 0 END) AS content_question_had_explanation_avg,
-  STDDEV(CASE WHEN question_had_explanation THEN 1 ELSE 0 END) AS content_question_had_explanation_std
-  */
   -- ### target encoding features ###
   -- aggregation by contents
   COUNT(answered_correctly) AS content_answered_correctly_count,
@@ -91,5 +81,5 @@ FROM Kaggle_Riiid.cv_fold_info_20201015
 INNER JOIN  add_lag_feat_table USING (row_id)
 INNER JOIN Kaggle_Riiid.questions ON question_id = content_id
 INNER JOIN  Kaggle_Riiid.lda_content_feat_v1_fold0 USING (content_id)
-WHERE cv_fold_0 != -1 --AND content_id = 6114
+WHERE cv_fold_0 != -1
 GROUP BY content_id
