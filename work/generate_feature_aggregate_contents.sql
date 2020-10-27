@@ -1,3 +1,5 @@
+DECLARE fold INT64 DEFAULT 0;
+
 -- This query make aggregation features by contents
 
 -- lag features
@@ -13,7 +15,7 @@ ORDER BY user_id, timestamp, row_id
 SELECT
   -- ### key columns ###
   content_id as question_id,
-  0 AS fold,
+  fold AS fold,
 
   -- ### target encoding features ###
   -- aggregation by contents
@@ -77,9 +79,9 @@ SELECT
   MAX(tags_pca_0) AS content_tags_pca_0,
   MAX(tags_pca_1) AS content_tags_pca_1,
   
-FROM Kaggle_Riiid.cv_fold_info_20201015
+FROM Kaggle_Riiid.cv_fold_info_20201027
 INNER JOIN  add_lag_feat_table USING (row_id)
 INNER JOIN Kaggle_Riiid.questions ON question_id = content_id
 INNER JOIN  Kaggle_Riiid.lda_content_feat_v1_fold0 USING (content_id)
-WHERE cv_fold_0 != -1
+WHERE valid_fold != fold
 GROUP BY content_id
