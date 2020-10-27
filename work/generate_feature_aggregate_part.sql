@@ -1,3 +1,5 @@
+DECLARE fold INT64 DEFAULT 0;
+
 -- This query make aggregation features by part
 
 -- lag features
@@ -13,7 +15,7 @@ ORDER BY user_id, timestamp, row_id
 SELECT
   -- ### key columns ###
   part as part,
-  0 AS fold,
+  fold AS fold,
   
   -- ### target encoding features ###
   -- answer features
@@ -42,8 +44,8 @@ SELECT
   AVG(CASE WHEN question_had_explanation THEN 0 ELSE 1 END) AS part_question_had_explanation_inv_avg,
   STDDEV(CASE WHEN question_had_explanation THEN 0 ELSE 1 END) AS part_question_had_explanation_inv_std,
   
-FROM Kaggle_Riiid.cv_fold_info_20201015
+FROM Kaggle_Riiid.cv_fold_info_20201027
 INNER JOIN  add_lag_feat_table USING (row_id)
 INNER JOIN Kaggle_Riiid.questions ON question_id = content_id
-WHERE cv_fold_0 != -1
+WHERE valid_fold != fold
 GROUP BY part
