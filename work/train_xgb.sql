@@ -1,4 +1,4 @@
-CREATE MODEL Kaggle_Riiid.xgb_v6_08_fold0
+CREATE MODEL Kaggle_Riiid.xgb_v7_01
 OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         BOOSTER_TYPE = 'GBTREE',
         NUM_PARALLEL_TREE = 1,
@@ -18,8 +18,7 @@ OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         DATA_SPLIT_COL='is_test')    
 AS 
 SELECT
-  * EXCEPT (row_id, user_id, content_id, content_type_id, user_answer,
-               cv_fold_0, cv_fold_1, cv_fold_2, cv_fold_3, cv_fold_4, fold,
+  * EXCEPT (row_id, user_id, content_id, content_type_id, user_answer, fold, valid_fold,
                prior_question_had_explanation,
                question_id, content_part,
                -- ignore user agg feat
@@ -85,17 +84,17 @@ SELECT
                content_user_answer_3_sum,
                content_n_user,
                content_tags_pca_0,
-               content_tags_pca_1,
+               content_tags_pca_1
                -- ignore part agg feat
-               part_n_content_id,
-               part_n_unique_user,
-               part_task_container_id_avg,
-               part_task_container_id_std
+               -- part_n_content_id,
+               -- part_n_unique_user,
+               -- part_task_container_id_avg,
+               -- part_task_container_id_std
                ),
   CASE WHEN prior_question_had_explanation THEN 1 ELSE 0 END AS prior_question_had_explanation,
-  cv_fold_0 = -1 AS is_test,
-FROM Kaggle_Riiid.cv_fold_info_20201015
+  valid_fold = 0 AS is_test,
+FROM Kaggle_Riiid.cv_fold_info_20201027
 INNER JOIN  Kaggle_Riiid.train USING (row_id)
-INNER JOIN Kaggle_Riiid.agg_user_feat_v1_fold0 USING (user_id)
-INNER JOIN Kaggle_Riiid.agg_contents_feat_v1_fold0 ON question_id = content_id
-INNER JOIN Kaggle_Riiid.agg_part_feat_v1_fold0 ON content_part = part
+INNER JOIN Kaggle_Riiid.agg_user_feat_v2 USING (user_id)
+INNER JOIN Kaggle_Riiid.agg_contents_feat_v2 ON question_id = content_id
+-- INNER JOIN Kaggle_Riiid.agg_part_feat_v1_fold0 ON content_part = part
