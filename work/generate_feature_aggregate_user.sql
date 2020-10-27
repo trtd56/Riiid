@@ -1,10 +1,12 @@
+DECLARE fold INT64 DEFAULT 0;
+
 -- This query make aggregation features by user
 
 SELECT
 
   -- ### key columns ###
   user_id,
-  0 AS fold,
+  fold AS fold,
 
   -- ### target encoding features ###
   -- aggregation by user
@@ -91,10 +93,10 @@ SELECT
   MAX(content_miss_3) AS user_lda_content_miss_3, 
   MAX(content_miss_4) AS user_lda_content_miss_4, 
 
-FROM Kaggle_Riiid.cv_fold_info_20201015
+FROM Kaggle_Riiid.cv_fold_info_20201027
 INNER JOIN  Kaggle_Riiid.train USING (row_id)
 INNER JOIN Kaggle_Riiid.questions ON questions.question_id = train.content_id
 INNER JOIN Kaggle_Riiid.lda_user_feat_v1_fold0 USING (user_id)
 INNER JOIN Kaggle_Riiid.lda_lecture_feat_v1_fold0 USING (user_id)
-WHERE cv_fold_0 != -1
+WHERE valid_fold != fold
 GROUP BY user_id
