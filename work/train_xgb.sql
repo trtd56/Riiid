@@ -1,4 +1,4 @@
-CREATE MODEL Kaggle_Riiid.xgb_v8_03
+CREATE MODEL Kaggle_Riiid.xgb_v10_03
 OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         BOOSTER_TYPE = 'GBTREE',
         NUM_PARALLEL_TREE = 1,
@@ -18,78 +18,13 @@ OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
         DATA_SPLIT_COL='is_test')    
 AS 
 SELECT
-  * EXCEPT (row_id, user_id, content_id, content_type_id, user_answer, fold, valid_fold,
-               prior_question_had_explanation,
-               question_id,  content_part,
-               -- ignore user agg feat
-               user_part1_avg,
-               user_part1_sum,
-               user_part2_avg, 
-               user_part2_sum,
-               user_part3_avg,
-               user_part3_sum,
-               user_part4_avg,
-               user_part4_sum,
-               user_part5_avg,
-               user_part5_sum,
-               user_part6_avg,
-               user_part6_sum,
-               user_part7_avg,
-               user_part7_sum,
-               user_timestamp_max,
-               user_lda_lecture_0,
-               user_lda_lecture_1,
-               user_lda_lecture_2,
-               user_lda_lecture_3,
-               user_lda_lecture_4,
-               user_task_container_id_max,
-               user_correct_part1_std,
-               user_correct_part2_std,
-               user_correct_part3_std,
-               user_correct_part4_std,
-               user_correct_part5_std,
-               user_correct_part6_std,
-               user_correct_part7_std,
-               user_correct_part1_sum,
-               user_correct_part2_sum,
-               user_correct_part3_sum,
-               user_correct_part4_sum,
-               user_correct_part5_sum,
-               user_correct_part6_sum,
-               user_correct_part7_sum,
-               user_n_unique_content,
-               user_prior_question_elapsed_time_std,
-               user_prior_question_elapsed_time_min,
-               user_prior_question_elapsed_time_avg,
-               user_prior_question_elapsed_time_max,
-               user_prior_question_had_explanation_inv_avg,
-               user_prior_question_had_explanation_inv_std,
-               user_n_unique_task_container_id,
-               user_n_content,
-               -- ignore content agg feat
-               content_timestamp_min,
-               content_timestamp_max,
-               content_timestamp_std,
-               content_timestamp_avg,
-               content_question_elapsed_time_std,
-               content_question_elapsed_time_min,
-               content_question_elapsed_time_avg,
-               content_task_container_id_max,
-               content_task_container_id_min,
-               content_task_container_id_avg,
-               content_task_container_id_std,
-               content_user_answer_0_sum,
-               content_user_answer_1_sum,
-               content_user_answer_2_sum,
-               content_user_answer_3_sum,
-               content_n_user,
-               content_tags_pca_0,
-               content_tags_pca_1
+  * EXCEPT (row_id, user_id, content_id, content_type_id, user_answer, valid_fold,
+               prior_question_had_explanation, question_id
                ),
   CASE WHEN prior_question_had_explanation THEN 1 ELSE 0 END AS prior_question_had_explanation,
   valid_fold = 0 AS is_test,
 FROM Kaggle_Riiid.cv_fold_info_20201027
 INNER JOIN  Kaggle_Riiid.train USING (row_id)
-INNER JOIN Kaggle_Riiid.agg_user_feat_v2 USING (user_id)
-INNER JOIN Kaggle_Riiid.agg_contents_feat_v2 ON question_id = content_id
 INNER JOIN  Kaggle_Riiid.row_features_v1 USING (row_id)
+INNER JOIN Kaggle_Riiid.question_tags_ohe ON question_id = content_id
+INNER JOIN Kaggle_Riiid.agg_contents_feat_v3 ON agg_contents_feat_v3.question_id = content_id
