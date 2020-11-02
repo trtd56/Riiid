@@ -3,3 +3,4 @@
 
 - [Competition Page](https://www.kaggle.com/c/riiid-test-answer-prediction)
 - [My BigQuery Project](https://console.cloud.google.com/bigquery?hl=ja&project=cyberagent-312)
+- [Create SQL Notebook](https://www.kaggle.com/takamichitoda/riiid-create-sql)
