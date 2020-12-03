@@ -4,4 +4,4 @@
 - [Competition Page](https://www.kaggle.com/c/riiid-test-answer-prediction)
 - [My BigQuery Project](https://console.cloud.google.com/bigquery?hl=ja&project=cyberagent-312)
 - [Create SQL Notebook](https://www.kaggle.com/takamichitoda/riiid-create-sql)
-- [make feature table Notebook](https://www.kaggle.com/takamichitoda/riiid-make-feature-table-csv?scriptVersionId=48408204)
+- [Create feature table Notebook](https://www.kaggle.com/takamichitoda/riiid-create-feature-table-csv?scriptVersionId=48409096)
