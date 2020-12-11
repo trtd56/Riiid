@@ -1,9 +1,47 @@
 # My Solution
 
-- Model: XGBoost
-- Ensemble: iteration ensemble
-- CV strategy: one out of fold
-- feature:
+## Model
+### XGBoost only
+
+I train my model by using BigQuery ML because I wanted to study SQL.
+I think it was a good way for me.
+And one other good thing about BigQuery ML is I can use all data to train.
+
+### Parameter
+
+This is my BigQuery code to train my XGB model.
+The parameter can be seen here.
+
+```sql
+CREATE MODEL `<My model PATH>`
+OPTIONS(MODEL_TYPE='BOOSTED_TREE_CLASSIFIER',
+        BOOSTER_TYPE = 'GBTREE',
+        NUM_PARALLEL_TREE = 1,
+        MAX_ITERATIONS = 300,
+        TREE_METHOD = 'HIST',
+        EARLY_STOP = False,
+        MIN_REL_PROGRESS=0.0001,
+        LEARN_RATE =0.3,
+        MAX_TREE_DEPTH=11,
+        COLSAMPLE_BYTREE=1.0,
+        COLSAMPLE_BYLEVEL=0.4,
+        SUBSAMPLE = 0.9,
+        MIN_TREE_CHILD_WEIGHT=2,
+        L1_REG=0,
+        L2_REG=1.0,
+        INPUT_LABEL_COLS = ['answered_correctly'],
+        DATA_SPLIT_METHOD='CUSTOM',
+        DATA_SPLIT_COL='is_test')    
+AS 
+SELECT `<My Feature Tables>`
+```
+
+## CV strategy
+### one out of fold
+
+## Ensemble: iteration ensemble
+
+## feature:
   - aggregation by contents
     - answered_correctl: count/sum/avg/std
     - timestamp: max/min/avg/std
@@ -20,9 +58,12 @@
     - number of try
   - timestamp diff
   
-I train my model by using BigQuery ML because I wanted to study SQL.
-I think it was a good way for me.
-And one other good thing about BigQuery ML is I can use all data to train.
+
+
+## Ref
+### Notebook
+- Create SQL: https://www.kaggle.com/takamichitoda/riiid-create-sql
+- Create Tags Onehot Encode Table: https://www.kaggle.com/takamichitoda/riiid-create-feature-table-csv
 
 # 最後に試すこと
 ## パラメータ調整
