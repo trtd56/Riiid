@@ -37,11 +37,16 @@ SELECT `<My Feature Tables>`
 ```
 
 ## CV strategy
-### one out of fold
+### leave-one-out
+I use [this strategy](https://www.kaggle.com/its7171/cv-strategy) by leave-one-out. It has looked good to me.
 
-## Ensemble: iteration ensemble
+## Ensemble
+### NO
+I use a single model.
+I tried iteration ensemble and CV fold ensemble, however, both got the same score as my single model.
 
-## feature:
+## Feature
+My features is:
   - aggregation by contents
     - answered_correctl: count/sum/avg/std
     - timestamp: max/min/avg/std
@@ -58,12 +63,11 @@ SELECT `<My Feature Tables>`
     - number of try
   - timestamp diff
   
-
-
-## Ref
+## Reference
 ### Notebook
 - Create SQL: https://www.kaggle.com/takamichitoda/riiid-create-sql
 - Create Tags Onehot Encode Table: https://www.kaggle.com/takamichitoda/riiid-create-feature-table-csv
+- Create CV index: https://www.kaggle.com/takamichitoda/riiid-make-cv-index
 
 # 最後に試すこと
 ## パラメータ調整
