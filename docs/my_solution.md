@@ -78,9 +78,9 @@ My features is:
 
 # 最後に試すこと
 ## パラメータ調整
-- [ ] DART, FOREST 複数設定
-- [ ] LR=0.5
 - [ ] Iter=400
+- [ ] LR=0.5
+- [ ] DART, FOREST 複数設定
 
 ## 特徴量
 - [ ] Window=200の正解率
