@@ -1,11 +1,18 @@
 # My Solution
 
-## Model
-### XGBoost only
 
 I train my model by using BigQuery ML because I wanted to study SQL.
 I think it was a good way for me.
 And one other good thing about BigQuery ML is I can use all data to train.
+
+## Model
+### XGBoost
+It looks that most people use LGBM but I use XGBoost.
+I'm not familiar GBDT algorithm, I hear that LGBM is better than XGBoost.
+Unfortunately, BigQuery ML only has XGBoost. So, I use XGBoost. (prioritized studying SQL)
+
+BigQuery ML has other ML models. For example, Logistic Regression, ARIMA, and Neural Network.
+I tried them but XGBoost was best.
 
 ### Parameter
 
