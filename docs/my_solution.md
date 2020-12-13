@@ -89,3 +89,4 @@ My features is:
 - [ ] 時間ごとの正解率/解いた問題数
 - [ ] prior_question_had_explanation累計,　平均
 - [ ] prior_question_elapsed_time平均
+- [ ] timediffの窓平均
