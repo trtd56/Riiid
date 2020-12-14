@@ -84,14 +84,10 @@ My features is:
 |xgb_v17_02_f0||||xgb_v17_01_f0に特徴量追加|
 |xgb_v17_03_f0||||LR=0.5|
 
-## パラメータ調整
-- [ ] ~~DART, FOREST 複数設定==
-  - overfitしてる感も無いしやめる
-
 ## 特徴量
-- [ ] ~~Window=200の正解率(問題のみ)~~
-- [ ] Window=200のlecture数
-- [ ] prior_question_had_explanation累計,　平均
-- [ ] prior_question_elapsed_time平均
-- [ ] timediffの窓平均(200)
-- [ ] 時間ごとの正解率/解いた問題数
+- Window=200
+  - lecture: count/avg/std
+  - timediff: avg/std
+  - prior_question_elapsed_time: avg/std
+- prior_question_had_explanation: 累計, 平均 
+- 時間ごとの解いた問題数/正解率
