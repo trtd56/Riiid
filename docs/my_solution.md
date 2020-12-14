@@ -89,6 +89,6 @@ My features is:
   - lecture: count/avg/std
   - timediff: avg/std
   - prior_question_elapsed_time: avg/std
-  prior_question_had_explanation: count/avg/std
+  - prior_question_had_explanation: count/avg/std
 - prior_question_had_explanation: 累計, 平均 
 - 時間ごとの解いた問題数/正解率
