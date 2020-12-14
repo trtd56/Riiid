@@ -77,16 +77,21 @@ My features is:
 - Create CV index: https://www.kaggle.com/takamichitoda/riiid-make-cv-index
 
 # 最後に試すこと
+
+|モデル名|Loss|AUC|LB|memo|
+|--|--|--|--|--|
+|xgb_v17_01_f0||||Iter=400, Window=200の正解率|
+|xgb_v17_02_f0||||xgb_v17_01_f0に特徴量追加|
+|xgb_v17_03_f0||||LR=0.5|
+
 ## パラメータ調整
-- [ ] Iter=400
-- [ ] LR=0.5
-- [ ] DART, FOREST 複数設定
+- [ ] ~~DART, FOREST 複数設定==
+  - overfitしてる感も無いしやめる
 
 ## 特徴量
-- [ ] Window=200の正解率
-- [ ] Window=200の正解率(問題のみ)
+- [ ] ~~Window=200の正解率(問題のみ)~~
 - [ ] Window=200のlecture数
-- [ ] 時間ごとの正解率/解いた問題数
 - [ ] prior_question_had_explanation累計,　平均
 - [ ] prior_question_elapsed_time平均
-- [ ] timediffの窓平均
+- [ ] timediffの窓平均(200)
+- [ ] 時間ごとの正解率/解いた問題数
