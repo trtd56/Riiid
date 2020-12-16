@@ -96,3 +96,5 @@ My features is:
 
 ## LGBM
 少量データで？1000万行とか
+## アンサンブル
+https://www.kaggle.com/leadbest/sakt-riiid-lgbm-bagging2
