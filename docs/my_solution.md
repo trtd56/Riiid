@@ -97,6 +97,12 @@ My features is:
 ## LGBM
 少量データで？1000万行とか
 ## アンサンブル
-https://www.kaggle.com/leadbest/sakt-riiid-lgbm-bagging2
+- ベース: https://www.kaggle.com/leadbest/sakt-riiid-lgbm-bagging2
+- パラメータ調整: https://www.kaggle.com/ammarnassanalhajali/riiid-lgbm-bagging2-sakt-0-781
+- LGBMモデル学習: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-trainn?scriptVersionId=49472329
+- SAKTモデル学習: https://www.kaggle.com/takamichitoda/riiid-sakt-train-and-infer/output
+  - XGB x SAKT: https://www.kaggle.com/takamichitoda/riiid-infer-v4-xgb-sakt?scriptVersionId=49545717
+
+
 ## 確認
 - https://www.kaggle.com/c/riiid-test-answer-prediction/discussion/203184
