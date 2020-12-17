@@ -100,12 +100,15 @@ My features is:
 - 少量データで？1000万行とか
 
 ## SAKT
--2nd stage: https://www.kaggle.com/takamichitoda/riiid-sakt-train-2-nd?scriptVersionId=49550418
-
+- 4th model予測(train auc = 0.774)
+  - https://www.kaggle.com/takamichitoda/riiid-sakt-infer-only?scriptVersionId=49571864
+  
 ## アンサンブル
-- ベース: https://www.kaggle.com/leadbest/sakt-riiid-lgbm-bagging2
-- SAKTモデル学習: https://www.kaggle.com/takamichitoda/riiid-sakt-train-and-infer/output
-  - XGB x SAKT: https://www.kaggle.com/takamichitoda/riiid-infer-v4-xgb-sakt?scriptVersionId=49545717
+- SANK + XGB, 90%
+  - https://www.kaggle.com/takamichitoda/riiid-infer-v4-xgb-sakt?scriptVersionId=49549159
+- SANK + XGB, no limit
+- SANK + XGB, SANKのみno limit
+- SANK best + XGB
 
 ## 確認
 - https://www.kaggle.com/c/riiid-test-answer-prediction/discussion/203184
