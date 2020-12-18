@@ -84,7 +84,6 @@ My features is:
 |xgb_v17_01_f0|0.5270|0.7767|モデルでかすぎ|Iter=400, Window=200の正解率|
 |xgb_v17_03_f0||||Iter=300, Window=200の正解率|
 |xgb_v17_04_f0||||xgb_v17_01_f0に特徴量追加|
-|xgb_v17_05_f0||||LR=0.5|
 
 ## 特徴量
 - Window=200
