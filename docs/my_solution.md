@@ -100,15 +100,12 @@ My features is:
 - 少量データで？1000万行とか
 
 ## SAKT
-- 4th model予測(train auc = 0.774)
-  - https://www.kaggle.com/takamichitoda/riiid-sakt-infer-only?scriptVersionId=49571864
+- 4th model予測(AUC=0.774 / LB)
+- 4th model予測(AUC=0.774 / LB) no limit
   
 ## アンサンブル
-- SANK + XGB, 90%
-  - https://www.kaggle.com/takamichitoda/riiid-infer-v4-xgb-sakt?scriptVersionId=49549159
-- SANK + XGB, no limit
-- SANK + XGB, SANKのみno limit
 - SANK best + XGB
+- SANK best + XGB add w200
 
 ## 確認
 - https://www.kaggle.com/c/riiid-test-answer-prediction/discussion/203184
