@@ -96,17 +96,16 @@ My features is:
 - インタラクションの頻度(週とか)
 
 ## LGBM
-- LGBMモデル学習: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-trainn?scriptVersionId=49472329
-- パラメータ調整: https://www.kaggle.com/ammarnassanalhajali/riiid-lgbm-bagging2-sakt-0-781
+- パラメータ調整: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-train?scriptVersionId=49776534
 - 少量データで？1000万行とか
 
 ## SAKT
-- 4th model予測(AUC=0.774 / LB)
-- 4th model予測(AUC=0.774 / LB) no limit
-  
+- prior_question_elapsed_timeを追加
+
 ## アンサンブル
 - SANK best + XGB
-- SANK best + XGB add w200
+- SANK + XGB + LGBM
+
 
 ## 確認
 - https://www.kaggle.com/c/riiid-test-answer-prediction/discussion/203184
