@@ -82,15 +82,11 @@ My features is:
 |--|--|--|--|--|
 |__xgb_v15_13_f0__|__0.5274__|__0.7763__|__0.779__|__baseline__|
 |xgb_v17_01_f0|0.5270|0.7767|モデルでかすぎ|Iter=400, Window=200の正解率|
-|xgb_v17_03_f0||||Iter=300, Window=200の正解率|
-|xgb_v17_04_f0||||xgb_v17_01_f0に特徴量追加|
+|xgb_v17_02_f0||||Iter=300, Window=200の正解率, 特徴量追加|
 
 ## 特徴量
 - Window=200
   - lecture: count/avg/std
-  - timediff: avg/std
-  - prior_question_elapsed_time: avg/std
-  - prior_question_had_explanation: count/avg/std
 - prior_question_had_explanation: 累計, 平均 
 - 時間ごとの解いた問題数/正解率
 - インタラクションの頻度(週とか)
