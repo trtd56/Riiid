@@ -88,6 +88,7 @@ My features is:
 |__xgb_v15_13_f0__|__0.5274__|__0.7763__|__0.779__|__baseline__|
 |xgb_v17_01_f0|0.5270|0.7767|モデルでかすぎ|Iter=400, Window=200の正解率|
 |xgb_v17_02_f0||||Iter=300, Window=200の正解率, 特徴量追加|
+|xgb_v17_03_f0||||Iter=300, Window=200の正解率, 特徴量追加, null importanceで選択|
 
 ## LGBM
 
