@@ -103,4 +103,4 @@ My features is:
 - null importance カットした1/4と2/4を足して再度実験: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-null-importance-v2?scriptVersionId=50336300
 
 ## SAKT
-- prior_question_elapsed_timeを追加
+- time lagを追加: https://www.kaggle.com/takamichitoda/riiid-sakt-train?scriptVersionId=49906418
