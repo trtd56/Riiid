@@ -93,6 +93,7 @@ My features is:
 ## LGBM
 
 ### モデル学習
+- null importance + データx300ファイル: 
 
 ### パラメータ調整
 - https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-train?scriptVersionId=49776534
@@ -100,8 +101,6 @@ My features is:
 ### 特徴量選択
 - null importance カットしたやつの2/4: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-null-importance?scriptVersionId=50289258
 - null importance カットした1/4を足して再度実験: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-null-importance-v2?scriptVersionId=50289907
-
-
 
 ## SAKT
 - prior_question_elapsed_timeを追加
