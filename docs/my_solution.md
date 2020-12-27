@@ -104,11 +104,3 @@ My features is:
 
 ## SAKT
 - prior_question_elapsed_timeを追加
-
-## アンサンブル
-- SANK best + XGB
-- SANK + XGB + LGBM
-
-
-## 確認
-- https://www.kaggle.com/c/riiid-test-answer-prediction/discussion/203184
