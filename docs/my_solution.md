@@ -99,8 +99,8 @@ My features is:
 - https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-train?scriptVersionId=49776534
 
 ### 特徴量選択
-- null importance カットしたやつの2/4: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-null-importance?scriptVersionId=50289258
-- null importance カットした1/4を足して再度実験: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-null-importance-v2?scriptVersionId=50289907
+- null importance カットしたやつの3/4: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-null-importance?scriptVersionId=50335473
+- null importance カットした1/4と2/4を足して再度実験: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-null-importance-v2?scriptVersionId=50336300
 
 ## SAKT
 - prior_question_elapsed_timeを追加
