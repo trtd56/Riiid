@@ -88,19 +88,16 @@ My features is:
 |__xgb_v15_13_f0__|__0.5274__|__0.7763__|__0.779__|__baseline__|
 |xgb_v17_01_f0|0.5270|0.7767|モデルでかすぎ|Iter=400, Window=200の正解率|
 |xgb_v17_02_f0|0.5266|0.7771||Iter=300, Window=200の正解率, 特徴量追加→null importanceで選択|
-|xgb_v17_03_f0||||Iter=300, Window=200の正解率, 特徴量追加, with answer std|
+|xgb_v17_03_f0|0.5266|0.7771||Iter=300, Window=200の正解率, 特徴量追加→null importanceで選択した残りのやつ|
+|xgb_v17_04_f0||||Iter=300, Window=200の正解率, 特徴量追加, with answer std|
 
 ## LGBM
 
 ### モデル学習
-- null importance + データx300ファイル: 
+- null importanceで選択した残りのやつ
 
 ### パラメータ調整
 - https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-train?scriptVersionId=49776534
-
-### 特徴量選択
-- null importance カットしたやつの3/4: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-null-importance?scriptVersionId=50335473
-- null importance カットした1/4と2/4を足して再度実験: https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-null-importance-v2?scriptVersionId=50336300
 
 ## SAKT
 - time lagを追加: https://www.kaggle.com/takamichitoda/riiid-sakt-train?scriptVersionId=49906418
