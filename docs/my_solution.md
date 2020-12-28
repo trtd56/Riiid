@@ -90,14 +90,3 @@ My features is:
 |xgb_v17_02_f0|0.5266|0.7771||Iter=300, Window=200の正解率, 特徴量追加→null importanceで選択|
 |xgb_v17_03_f0|0.5266|0.7771||Iter=300, Window=200の正解率, 特徴量追加→null importanceで選択した残りのやつ|
 |xgb_v17_04_f0||||Iter=300, Window=200の正解率, 特徴量追加, with answer std|
-
-## LGBM
-
-### モデル学習
-- null importanceで選択した残りのやつ
-
-### パラメータ調整
-- https://www.kaggle.com/takamichitoda/riiid-lgbm-bagging2-train?scriptVersionId=49776534
-
-## SAKT
-- time lagを追加: https://www.kaggle.com/takamichitoda/riiid-sakt-train?scriptVersionId=49906418
