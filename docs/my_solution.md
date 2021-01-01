@@ -89,6 +89,5 @@ My features is:
 |xgb_v17_01_f0|0.5270|0.7767|モデルでかすぎ|Iter=400, Window=200の正解率|
 |xgb_v17_02_f0|0.5266|0.7771|0.779|Iter=300, Window=200の正解率, 特徴量追加→null importanceで選択|
 |xgb_v17_03_f0||||Iter=300, Window=200の正解率, 特徴量追加, with answer std|
-|xgb_v17_04_f0||||Iter=300, Window=200の正解率, 特徴量追加→null importanceで選択した残りのやつv1,2|
-|xgb_v17_05_f0||||Iter=300, Window=200の正解率, 特徴量追加→null importanceで選択した残りのやつv3,4|
+|xgb_v17_04_f0||||Iter=300, Window=200の正解率, 特徴量追加→null importanceで選択した残りのやつv1~4|
 
