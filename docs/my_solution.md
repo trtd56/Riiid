@@ -91,7 +91,7 @@ My features is:
 |xgb_v17_03_f0|0.5255|0.7783||Iter=300, Window=200の正解率, 特徴量追加, with answer std|
 |xgb_v17_04_f0|0.5266|0.7771||Iter=300, Window=200の正解率, 特徴量追加→null importanceで選択した残りのやつv1~4|
 |xgb_v17_05_f0|0.5255|0.7784||DART, TREE|
-|xgb_v17_06_f0|0.5255|0.7784||DART, FOREST-4|
+|xgb_v17_06_f0|0.5255|0.7784|0.781|DART, FOREST-4|
 |xgb_v17_07_f0|0.5252|0.7787||DART, FOREST-4, 特徴追加(lectureとworkのカウントを分ける)|
 |xgb_v17_08_f0||||DART, FOREST-4, 特徴追加(lectureとworkのカウントを分ける), bug fix|
 
