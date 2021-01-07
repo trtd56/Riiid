@@ -109,7 +109,3 @@ My features is:
 |xgb_v17_06_f0|0.5255|0.7784|0.781|DART, FOREST-4|
 |xgb_v17_07_f0|0.5252|0.7787||DART, FOREST-4, 特徴追加(lectureとworkのカウントを分ける)|
 |xgb_v17_08_f0|0.5255|0.7784||DART, FOREST-4, 特徴追加(lectureとworkのカウントを分ける), bug fix|
-
-- window特徴の確認
-- 特徴量のbug fix
-- 
