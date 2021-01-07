@@ -51,9 +51,11 @@ I use [this strategy](https://www.kaggle.com/its7171/cv-strategy) by leave-one-o
 I use the best XGBoost model and two SAKT models.
 SAKT models are made by forking this notebook.
 I little updated three in this notebook that:
-1. select random span data (original core use last 200 data)
-2. save best score model in epoch model
-3. Increase train epoch(25)
+1. Randomly cut to a length of 200 in train data. (original code had used last 200 data)
+2. Save best score epoch model.
+3. Increase train epoch.
+
+Each score is here.
 
 |model|CV|LB|
 | -- | -- | -- |
@@ -61,10 +63,7 @@ I little updated three in this notebook that:
 |SAKT1||0.774|
 |SAKT2||0.773|
 
-I tried iteration ensemble and CV fold ensemble, however, both got the same score as my single model.
-
-
-
+I tried iteration ensemble and CV fold ensemble in XGBoost, however, both got the same score as my single model.
 
 ## Feature
 My features is:
@@ -82,12 +81,14 @@ My features is:
     - correct answer rate
   - each lecture tag cumulative sum
     - number of try
-  - timestamp diff
-
-## Something I wanted to try. (but couldn't enough time & resources)
-- lecture time window feature (count/avg/std)
-- parameter search
-- Stacking
+  - time window features that size is 200 
+    - answer correctry: sum/avg/std
+    - question_had_explanation: sum/avg/std
+    - question_elapsed_time: avg/max
+    - timestamp lag: avg/max
+    - number of content_id=0
+    - number of content_id=1
+  - timestamp lag
 
 ## Reference
 ### Notebook
