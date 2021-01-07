@@ -60,8 +60,8 @@ Each score is here.
 |model|CV|LB|
 | -- | -- | -- |
 |XGB|0.7784|0.781|
-|SAKT1||0.774|
-|SAKT2||0.773|
+|SAKT1|0.772|0.774|
+|SAKT2|0.772|0.773|
 
 I tried iteration ensemble and CV fold ensemble in XGBoost, however, both got the same score as my single model.
 
@@ -83,7 +83,6 @@ My features is:
     - number of try
   - time window features that size is 200 
     - answer correctry: sum/avg/std
-    - question_had_explanation: sum/avg/std
     - question_elapsed_time: avg/max
     - timestamp lag: avg/max
     - number of content_id=0
