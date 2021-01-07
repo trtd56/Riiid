@@ -49,7 +49,7 @@ I use [this strategy](https://www.kaggle.com/its7171/cv-strategy) by leave-one-o
 ## Ensemble
 
 I use the best XGBoost model and two SAKT models.
-SAKT models are made by forking this notebook.
+SAKT models are made by forking [this notebook](https://www.kaggle.com/tarique7/v4-fork-of-riiid-sakt-model-full).
 I little updated three in this notebook that:
 1. Randomly cut to a length of 200 in train data. (original code had used last 200 data)
 2. Save best score epoch model.
