@@ -67,6 +67,8 @@ I weighted averaging 3:1:1 this model and I got 0.787 in the public leaderboard.
 
 I tried iteration ensemble and CV fold ensemble in XGBoost, however, both got the same score as my single model.
 
+Final my submission notebook is [here](https://www.kaggle.com/takamichitoda/riiid-infer-v8-xgb-sakt?scriptVersionId=51291197).
+
 ## Feature
 My features is:
   - aggregation by contents
