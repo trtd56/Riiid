@@ -53,7 +53,7 @@ SAKT models are made by forking [this notebook](https://www.kaggle.com/tarique7/
 I little updated three in this notebook that:
 1. Randomly cut to a length of 200 in train data. (original code had used last 200 data)
 2. Save best score epoch model.
-3. Increase train epoch.
+3. Parameter tuning.
 
 Each score is here.
 
