@@ -84,6 +84,7 @@ My features is:
   - time window features that size is 200 
     - answer correctry: sum/avg/std
     - question_elapsed_time: avg/max
+    - question_had_explanation: sum/avg/std
     - timestamp lag: avg/max
     - number of content_id=0
     - number of content_id=1
