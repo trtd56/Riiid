@@ -1,15 +1,14 @@
 # My Solution
 
 
-I train my model by using BigQuery ML because I wanted to study SQL.
-I think it was a good way for me.
-And one other good thing about BigQuery ML is I can use all data to train.
+My main strategy is training my model by using BigQuery ML because I wanted to learn it.
+I think it was a good way for me. And one other good thing about BigQuery ML is I can use all data to train.
 
 ## Model
 ### XGBoost
 It looks that most people use LGBM but I use XGBoost.
 I'm not familiar GBDT algorithm, I hear that LGBM is better than XGBoost.
-Unfortunately, BigQuery ML only has XGBoost. So, I use XGBoost. (prioritized studying SQL)
+Unfortunately, BigQuery ML only has XGBoost. So, I use XGBoost.
 
 BigQuery ML has other ML models. For example, Logistic Regression, ARIMA, and Neural Network.
 I tried them but XGBoost was best.
@@ -48,9 +47,24 @@ SELECT `<My Feature Tables>`
 I use [this strategy](https://www.kaggle.com/its7171/cv-strategy) by leave-one-out. It has looked good to me.
 
 ## Ensemble
-### NO
-I use a single model.
+
+I use the best XGBoost model and two SAKT models.
+SAKT models are made by forking this notebook.
+I little updated three in this notebook that:
+1. select random span data (original core use last 200 data)
+2. save best score model in epoch model
+3. Increase train epoch(25)
+
+|model|CV|LB|
+| -- | -- | -- |
+|XGB|0.7784|0.781|
+|SAKT1||0.774|
+|SAKT2||0.773|
+
 I tried iteration ensemble and CV fold ensemble, however, both got the same score as my single model.
+
+
+
 
 ## Feature
 My features is:
