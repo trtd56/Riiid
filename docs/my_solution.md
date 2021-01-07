@@ -63,6 +63,8 @@ Each score is here.
 |SAKT1|0.772|0.774|
 |SAKT2|0.772|0.773|
 
+I weighted averaging 3:1:1 this model and I got 0.787 in the public leaderboard.
+
 I tried iteration ensemble and CV fold ensemble in XGBoost, however, both got the same score as my single model.
 
 ## Feature
